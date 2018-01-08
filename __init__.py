@@ -43,13 +43,19 @@ def readJsonFile(file_path):
   with open(file_path, 'r') as content_file:
     return json.loads(content_file.read())
 
-def add_planet(radius, distance):
+def add_planet(name, radius, distance):
   """docstring for add_planet"""
   bpy.ops.mesh.primitive_ico_sphere_add(
-      subdivisions = 2,
+      subdivisions = 8,
       size = radius,
       location = (0.0, distance, 0.0),
       rotation = (0.0, 0.0, 0.0));
+  ob = bpy.context.object
+  ob.name = name
+  ob.show_name = True
+  me = ob.data
+  me.name = name + '-' + 'Mesh'
+  return ob
 
 def add_object(self, context):
   BASE_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -65,7 +71,7 @@ def add_object(self, context):
     distance = ( float(properties['distance']) * AU) / FACTOR
     """ km """
     radius = ( float(properties['diameter']) / 2) / FACTOR
-    add_planet(radius, distance)
+    add_planet(name, radius, distance)
 
 
 class OBJECT_OT_add_object(Operator, AddObjectHelper):
