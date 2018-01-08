@@ -65,7 +65,7 @@ def add_object(self, context):
 
   """ A.U. in km"""
   AU = float(149597870.7)
-  FACTOR = float(1000000)
+  FACTOR = float(100000000)
   for name, properties in planetaryData.items():
     """ (A.U.) """
     distance = ( float(properties['distance']) * AU) / FACTOR

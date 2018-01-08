@@ -1,4 +1,8 @@
 {
+    "sun": {
+        "diameter": "1391400",
+        "distance": "0"
+    },
     "earth": {
         "axis-tilt": "23.45",
         "density": "5.515",
