@@ -60,12 +60,11 @@ def add_object(self, context):
   """ A.U. in km"""
   AU = float(149597870.7)
   FACTOR = float(1000000)
-
-  for name, properties in planetaryData.iteritems():
+  for name, properties in planetaryData.items():
     """ (A.U.) """
-    distance = ( float(properties.distance) * AU) / FACTOR
+    distance = ( float(properties['distance']) * AU) / FACTOR
     """ km """
-    radius = ( float(properties.diameter) / 2) / FACTOR
+    radius = ( float(properties['diameter']) / 2) / FACTOR
     add_planet(radius, distance)
 
 
@@ -118,6 +117,3 @@ def unregister():
 
 if __name__ == "__main__":
     register()
-
-
-
